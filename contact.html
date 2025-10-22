@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <h1>WebProject</h1>
+        <div>
+            <a href="contact.html">Contact</a>
+            <a href="todo.html">Todo</a>
+        </div>
+    </nav>
+
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h2>Reach Us</h2>
+            <p><b>Email:</b> hello@webproject.com</p>
+            <p><b>Phone:</b> XXXXXXXXXX</p>
+            <p>We'd love to hear from you. Please fill out the form, and we’ll respond quickly!</p>
+        </div>
+
+        <div class="contact-form">
+            <h2>Contact Form</h2>
+            <form id="contactForm">
+                <label>Name:</label>
+                <input type="text" id="name" required>
+
+                <label>Email:</label>
+                <input type="email" id="email" required>
+
+                <label>Message:</label>
+                <textarea id="message" rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (name === "" || email === "" || message === "") {
+                alert("All fields are required!");
+                return;
+            }
+
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email!");
+                return;
+            }
+
+            alert("Message sent successfully ✅");
+            document.getElementById("contactForm").reset();
+        });
+    </script>
+</body>
+
+</html>
